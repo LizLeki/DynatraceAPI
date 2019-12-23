@@ -49,7 +49,10 @@ The script requires three parameters for execution:
          
    DT Managed Example:
 
-         python getSetWindows.py "https://mySampleEnv.dynatrace-managed.com/e/SampleEnvironmentID/" "abcdefjhij1234567890" "2020-01-01"  
+         python getSetWindows.py "https://mySampleEnv.dynatrace-managed.com/e/SampleEnvironmentID/" "abcdefjhij1234567890" "2020-01-01" 
+
 ## Troubleshooting
 
-Please refer to the log.log file that is created in the script execution director.
+Please refer to the log.log file that is created in the script execution directory.
+
+## Known Limitations
