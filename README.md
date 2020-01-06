@@ -65,4 +65,18 @@ With the provided parameters, `getSetWindows.py` will retrieve the maintanance w
 
 Please refer to the log.log file that is created in the script execution directory. Information on response codes is available [in the Dynatrace API help documentation](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/basics/dynatrace-api-response-codes/).
 
-## Known Limitations
+## Known Limitations and Suggested Wprkarounds
+
+Support for the following use cases was not included during initial development:
+
+  * Maintenance windows applied to multiple tag groups.
+    - Duplicate maintenance windows for each tag group, as needed.
+    - Leverage environment-level maintenance windows, when applicable.
+  * Timezone differences between configured maintenance windows and the machine executing python scripts.
+    - Build maintenance windows in the timezone of the python machine.
+    - Adjust timezone of python machine to reflect timezone of maintenance windows.
+  * Rate limit throttling in the `getSetWindows.py`
+    - Remove expired maintenance windows from environment.
+  * Very large tag groups.
+    - Configure maintenance windows to begin/end earlier, to account for delays encountered in toggling each monitor on/off.
+   
