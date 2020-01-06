@@ -32,10 +32,8 @@ The script requires three parameters for execution:
 
 1. Generate a [Dynatrace API Token](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/) with the following permissions enabled
 
-         * Access problem and event feed, metrics and topology
-         * Configure maintenance windows
+         * Read configuration
          * Create and read synthetic monitors, locations, and nodes
-         * Read synthetic monitors, locations, and nodes
 
 2. Navigate to the script directory in Command Prompt
 
