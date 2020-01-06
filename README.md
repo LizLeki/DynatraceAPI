@@ -1,6 +1,6 @@
-# Schedule Bulk-Enable-Disable-Monitors around Maintenance Windows
+# Schedule Automatic Enable-Disable Monitor Groups around Maintenance Windows
 
-This snippet contains two Python scripts, which together allow you to automate the creation of scheduled tasks which bulk enable/disable Dynatrace Synthetic Monitors via REST API at times associated with planned maintenance windows.
+The two Python scripts in this directory allow you you to automate the creation of scheduled tasks in Windows Task Manager which bulk enable/disable Dynatrace Synthetic Monitors via REST API at times associated with planned maintenance windows.
 
 <b>getSetWindows.py</b> leverages the maintenence window API to retrieve information about scheduled maintenence windows for a given date and creates or updates tasks in Windows Task Manager to trigger a seperate Python script which handles toggling tag groups on/off around each window.
 
@@ -18,9 +18,9 @@ Note that this script is community driven and is not officially supported throug
 ### Prerequisites
 
 * Dynatrace tenant/environment
-* [Python3](https://www.python.org/downloads/)
-   * [library]
-   * [library]
+* [Python3](https://www.python.org/downloads/) (scripts developed using 3.7.3)
+   * [pywin32 Windows API access for Python](https://github.com/mhammond/pywin32)
+   * [requests HTTP library for Python](https://2.python-requests.org/en/master/)
     
 ## Usage
 The script requires three parameters for execution:
