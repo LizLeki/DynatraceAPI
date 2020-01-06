@@ -22,18 +22,30 @@ Note that this script is community driven and is not officially supported throug
    * [pywin32 Windows API access for Python](https://github.com/mhammond/pywin32)
    * [requests HTTP library for Python](https://2.python-requests.org/en/master/)
     
+## Installation
+
+1. Download and install Python3, selecting the option to 'Add Python 3.X to PATH'.
+        
+2. Open command prompt as administrator and use your preferred package manager to install the non-standard prerequisite libraries (e.g., as below, using pip).
+  
+       pip install pywin32
+       pip install requests
+
 ## Usage
-The script requires three parameters for execution:
+
+Only `getSetWindows.py` need be executed directly. The following parameters must be specified - in order - at the time of execution:
 * Dynatrace domain
 * API token
 * Date
 
+With the provided parameters, `getSetWindows.py` will retrieve the maintanance window schedule for the data provided, determine the associated tag groups, and create tasks in Windows Task Scheduler which will execute `toggleMonitors.py` at the start and end of each maintenance period for an associated tag group.
+
 ### Basic Usage
 
-1. Generate a [Dynatrace API Token](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/) with the following permissions enabled
+1. Generate a [Dynatrace API Token](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/) with the following permissions enabled:
 
-         * Read configuration
-         * Create and read synthetic monitors, locations, and nodes
+        * Read configuration
+        * Create and read synthetic monitors, locations, and nodes
 
 2. Navigate to the script directory in Command Prompt
 
@@ -51,6 +63,6 @@ The script requires three parameters for execution:
 
 ## Troubleshooting
 
-Please refer to the log.log file that is created in the script execution directory.
+Please refer to the log.log file that is created in the script execution directory. Information on response codes is available [in the Dynatrace API help documentation](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/basics/dynatrace-api-response-codes/).
 
 ## Known Limitations
