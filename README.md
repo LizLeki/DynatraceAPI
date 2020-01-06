@@ -1,6 +1,6 @@
 # Schedule Automatic Enable-Disable Monitor Groups around Maintenance Windows
 
-The two Python scripts in this directory allow you you to automate the creation of scheduled tasks in Windows Task Manager which bulk enable/disable Dynatrace Synthetic Monitors via REST API at times associated with planned maintenance windows.
+The two Python scripts in this directory allow you to automate the creation of scheduled tasks in Windows Task Manager which bulk enable/disable Dynatrace Synthetic Monitors via REST API at times associated with planned maintenance windows.
 
 The installation and usage sections are written for Windows and may be slightly different on other operating systems.
 
@@ -11,7 +11,13 @@ Note that this script is community driven and is not officially supported throug
 
 `getSetWindows.py` leverages the maintenence window API to retrieve information about scheduled maintenence windows for a given date and creates or updates tasks in Windows Task Manager to trigger a seperate Python script which handles toggling tag groups on/off around each window.
 
+  * This script makes one API call to retrieve the identification strings for all maintenance windows stored in the specified environment, followed by one API call for each maintenance window that occurs on the specified date.
+
 `toggleMonitors.py` is a lightly modified version of [bulk-enable-disable-monitors](https://github.com/Dynatrace/snippets/tree/master/api/synthetic/bulk-enable-disable-monitors), which toggles synthetic monitors on and off by tag group. This script is executed with associated arguments as determined in getSetWindows.py
+
+  * This script makes two API calls - one to retrieve current configurations and the other to update the configuration to the specified status - per monitor associated with a tag group (or environment, in the case where all monitors are being toggled on/off).
+  
+By default, API access is limited to 50 requests per minute for Dynatrace SaaS and no limit for Dynatrace Managed.If necessary, please get in touch with your Dynatrace representative to request an API access increase.
 
 ### Prerequisites
 
@@ -77,6 +83,4 @@ Support for the following use cases was not included during initial development:
     - Remove expired maintenance windows from environment.
   * Very large tag groups.
     - Configure maintenance windows to begin/end earlier, to account for delays encountered in toggling each monitor on/off.
-  
-  
-By default, API access is limited to 50 requests per minute for Dynatrace SaaS and no limit for Dynatrace Managed. With the Dynatrace SaaS default limit, you will only be able to update 24 monitors per minute with this script. If necessary, please get in touch with your Dynatrace representative to request for an API access increase.
+
