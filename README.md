@@ -65,7 +65,7 @@ With the provided parameters, `getSetWindows.py` will retrieve the maintanance w
 
 Please refer to the log.log file that is created in the script execution directory. Information on response codes is available [in the Dynatrace API help documentation](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/basics/dynatrace-api-response-codes/).
 
-## Known Limitations and Suggested Wprkarounds
+## Known Limitations and Suggested Workarounds
 
 Support for the following use cases was not included during initial development:
 
